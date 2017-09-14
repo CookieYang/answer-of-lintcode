@@ -45,4 +45,7 @@ def findMissing2(n, str):
     helpFind(str,list,0, n)
     print(list)
     return int((1 + n)*n / 2 - sum(list))
+
+def findMissing(nums):
+    return int((1 + len(nums))*len(nums) / 2 - sum(nums))
 print(findMissing2(13,'1110987654321213'))
