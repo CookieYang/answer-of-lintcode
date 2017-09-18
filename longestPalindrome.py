@@ -30,3 +30,48 @@ def longestPalindrome(s):
             else:
                 break
     return s[maxL:maxR + 1]
+
+def isPalindrome(s):
+    def isValidCharacter(c):
+        if c.isdigit() or c.isalpha():
+            return True
+        else:
+            return False
+    length = len(s)
+    if length == 0:
+        return True
+    else:
+        l = 0
+        r = length - 1
+        lowS = s.lower()
+        while l != r and l <= r:
+            while not isValidCharacter(lowS[l]) and l < r:
+                l += 1
+            while not isValidCharacter(lowS[r]) and l < r:
+                r -= 1
+            if lowS[l] != lowS[r]:
+                return False
+            else:
+                l += 1
+                r -= 1
+        return True
+
+def isPalindrome(num):
+    # write your code here
+    s = str(num)
+    length = len(s)
+    if length == 0:
+        return True
+    else:
+        l = 0
+        r = length - 1
+    while l != r and l <= r:
+        if s[l] != s[r]:
+            return False
+        else:
+            l += 1
+            r -= 1
+    return True
+
+
+print(isPalindrome("A man, a plan, a canal: Panama"))
