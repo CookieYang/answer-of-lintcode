@@ -3,3 +3,8 @@ class RandomListNode:
         self.label = x
         self.next = next
         self.random = random
+
+class ListNode:
+    def __init__(self, val = None, next = None):
+        self.val = val
+        self.next = next

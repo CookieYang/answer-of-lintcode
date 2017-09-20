@@ -1,3 +1,4 @@
+from structs import ListNode
 def longestPalindrome(s):
     n = len(s)
     maxL, maxR, max = 0, 0, 0
@@ -73,5 +74,53 @@ def isPalindrome(num):
             r -= 1
     return True
 
+def reverseList(head):
+    if head == None or head.next == None:
+        return head
+    p = head
+    q = head.next
+    head.next = None
+    while q:
+        r = q.next
+        q.next = p
+        p = q
+        q = r
+    head = p
+    return head
 
-print(isPalindrome("A man, a plan, a canal: Panama"))
+
+def isPalindrome(head):
+    if head == None or head.next == None:
+        return True
+    else:
+        p = head
+        length  = 1
+        while p.next != None:
+            p = p.next
+            length += 1
+        mid = int(length / 2)
+        m = head
+        while mid != 0:
+            m = m.next
+            mid -= 1
+        f = m
+        f = reverseList(f)
+        p = head
+        while f.val == None:
+            f = f.next
+        while f != None:
+            if p.val != f.val:
+                return False
+            else:
+                p = p.next
+                f = f.next
+        return True
+
+g = ListNode()
+f = ListNode(1,g)
+e = ListNode(4,f)
+d = ListNode(-1,e)
+c = ListNode(-1,d)
+b = ListNode(4,c)
+a = ListNode(1,b)
+print(isPalindrome(a))
