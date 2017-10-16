@@ -22,3 +22,24 @@ def sortColors2(colors, k):
                 colors[k] = i + 1
                 k -= 1
         i -= 1
+
+class Solution:
+    def sortColors(self, nums):
+        i = 0
+        j = len(nums) - 1
+        k = 0
+        while k <= j:
+            if nums[k] == 2:
+                nums[j], nums[k] = nums[k],nums[j]
+                j -= 1
+            elif nums[k] == 1:
+                k += 1
+            else:
+                nums[i],nums[k] = nums[k],nums[i]
+                i += 1
+                k += 1
+
+s = Solution()
+num = [2,0,0,1,2,0,2]
+s.sortColors(num)
+print(num)
