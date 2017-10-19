@@ -64,6 +64,20 @@ class Solution:
                         left += 1
         return res
 
+    def threeSumClosest(self, numbers, target):
+        numbers.sort()
+        ans = None
+        for i in range(len(numbers)):
+            l, r = i + 1, len(numbers) - 1
+            while l < r :
+                sum = numbers[i] + numbers[l] + numbers[r]
+                if ans is None or abs(sum - target) < abs(ans - target):
+                    ans = sum
+                if sum <= target:
+                    l += 1
+                else:
+                    r -= 1
+        return ans
 
 
 s = Solution()
