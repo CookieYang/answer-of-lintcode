@@ -15,6 +15,5 @@ class Solution:
         self.dfs(n,k,1,0,tmp,res)
         return res
 
-
 s = Solution()
 print(s.combine(4,2))
