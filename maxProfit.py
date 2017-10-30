@@ -1,3 +1,4 @@
+import  sys
 class Solution:
     """
     @param: prices: Given an integer array
@@ -15,3 +16,14 @@ class Solution:
             if prices[i] < min:
                 min = prices[i]
         return profit
+
+    def maxProfitII(self,prices):
+        total = 0
+        low, high = sys.maxint, sys.maxint
+        for x in prices:
+            if x > high:
+                high = x
+            else:
+                total += high - low
+                high, low = x, x
+        return total + high - low
