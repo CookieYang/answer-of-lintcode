@@ -35,4 +35,22 @@ def houseRobber(A):
         last = cur
     return cur
 
-print(cutting([1, 5, 8, 9, 10, 17, 17, 20],8))
+def houseRobberII(A):
+    return max(houseRobber(A[1:]),houseRobber(A[:-1]))
+
+def numWays(n, k):
+        # write your code here
+    if n == 0:
+        return 0
+    if n == 1:
+        return k
+    if n == 2:
+        return k * k
+    pre, now = k, k * k
+    for i in range(3, n + 1):
+        tmp = now
+        now = (pre + now) * (k - 1)
+        pre = tmp
+    return now
+
+print(houseRobberII([3,6,4]))
