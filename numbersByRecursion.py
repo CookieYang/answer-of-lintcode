@@ -1,20 +1,20 @@
 class Solution:
     def numbersByRecursion(self,n):
-        max = 10
-        for i in range(1,n):
-            max = max * 10
-        max = max - 1
-        return self.recursion(n, 0, 1, max)
+        if n <= 0:
+            return []
+        nums = []
+        self.dfs(nums, n, 0)
+        return nums
 
-    def recursion(self, n , depth, i, max):
-        if depth >= n or i > max:
-            return i;
-        else:
-            r = self.recursion(n, depth + 1, i+1, max)
-            if r < max:
-                self.recursion(n, 0, i+1, max)
-            else:
-                return r
+    def dfs(self, nums, n, cur):
+        if n == 0:
+            if cur > 0:
+                nums.append(cur)
+            return
+        for i in range(0, 10):
+            self.dfs(nums, n - 1, cur * 10 + i)
+
+
 
 s = Solution()
-print(s.numbersByRecursion(3))
+s.numbersByRecursion(10)
